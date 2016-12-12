@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Todo">
+
+<head>
+    <title>Todo list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+     
+    <body>
+     
+                
+       <div ng-controller="todoController">
+          <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 container">
+          <div class="nav">
+				<img src="list.png"></a>
+			</div>
+			
+			<div class="body">
+				<hr align="left">
+				<h2>MAKE THINGS DONE</h2>
+				<h3>your daily todo list</h3>
+				
+            		          
+           <form name="frm" class="frm" ng-submit="addTodo()">
+               <input type="text" name = "newtodo" ng-model="newTodo" class="newTodo" required/>
+               <button ng-disabled="frm.$invalid">Go</button>
+            </form>
+            <ul class="frm">
+               <li ng-repeat="todo in todos">
+               <input type="checkbox" ng-model="todo.done"/>
+               <span ng-class="{'done': todo.done}">{{todo.title}}</span>
+               </li>
+            </ul>
+            
+                 <button ng-click="clearCompleted()">Clear Completed</button> 
+            </div>
+           </div>
+    	</div>   
+        </div>   
+                
+            
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src = "js/jquery-1.4.2.js"></script>
+        
+    <script>
+        
+        angular.module('Todo', []).
+        controller('todoController', ['$scope', function($scope){
+            $scope.todos = [
+                {'title': 'Build a todo app', 'done': false}
+            ];
+            
+            $scope.addTodo = function(){
+                $scope.todos.push({'title': $scope.newTodo, 'done': false})
+                $scope.newTodo = ''
+            }
+            $scope.clearCompleted = function(){
+                $scope.todos = $scope.todos.filter(function(item){
+                    return !item.done
+                });
+                
+            }
+        } ])
+        
+    </script>
+       
+    <script>
+   
+
+    
+    </script>    
+    
+       
+    <footer>
+		<ul>
+			<li><a href="">© 2016 Mariya Rafalovich.</a></li>
+			<li>•</li>
+			<li><a href="">Privacy &amp; Terms</a></li>
+			<li>•</li>
+			<li><a href="">Contact</a></li>
+		</ul>
+	</footer>
+        
+    </body>
+    
+    
+    
+</html>
+        
+        
