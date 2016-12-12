@@ -1,2 +1,1 @@
-# Todo-list-angularjs
-# Todo-list-angularjs
+# todo-list mini web application
